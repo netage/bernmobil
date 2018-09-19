@@ -1,0 +1,483 @@
+@prefix rr:     <http://www.w3.org/ns/r2rml#>.
+@prefix rml:    <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:     <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix oslo:   <http://purl.org/oslo/ns/localgov#>.
+@prefix adms:   <http://www.w3.org/ns/adms#>.
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard:  <http://www.w3.org/2006/vcard/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix adms:    <http://www.w3.org/ns/adms#>.
+@prefix locn:    <http://www.w3.org/ns/locn#>.
+@prefix schema: <http://schema.org/>.
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>.
+@prefix eCH-0071: <http://www.ech.ch/xmlns/eCH-0071/1/> .
+@prefix gont: <https://gont.ch/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix carml: <http://carml.taxonic.com/carml/> .
+
+<#Canton>
+  rml:logicalSource [
+    rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:referenceFormulation ql:XPath;
+    rml:iterator "/eCH-0071/cantons/canton";
+  ]; 
+
+  rr:subjectMap [
+    rr:template "http://classifications.data.admin.ch/canton/{cantonAbbreviation}";
+    rr:class gont:Canton ;
+  ];
+
+    rr:predicateObjectMap [
+    rr:predicate gont:cantonAbbreviation;
+    rr:objectMap [
+      rml:reference "cantonAbbreviation";
+    ]
+ ] ;
+
+    rr:predicateObjectMap [
+    rr:predicate gont:id;
+    rr:objectMap [
+      rml:reference "cantonId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate dct:identifier;
+    rr:objectMap [
+      rml:reference "cantonId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+    rr:predicateObjectMap [
+    rr:predicate gont:longName;
+    rr:objectMap [
+      rml:reference "cantonLongName";
+    ]
+ ] ;
+
+   rr:predicateObjectMap [
+    rr:predicate gont:date;
+    rr:objectMap [
+      rml:reference "cantonDateOfChange";
+      rr:datatype xsd:date ;
+    ]
+ ] .
+
+# District
+
+<#District>
+  rml:logicalSource [
+    rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:referenceFormulation ql:XPath;
+    rml:iterator "/eCH-0071/districts/district";
+  ]; 
+
+  rr:subjectMap [
+    rr:template "http://classifications.data.admin.ch/district/{districtId}";
+    rr:class gont:DistrictEntity ;
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate gont:id;
+    rr:objectMap [
+      rml:reference "districtId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate dct:identifier;
+    rr:objectMap [
+      rml:reference "districtId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtEntryModeId;
+    rr:objectMap [
+      rml:reference "districtEntryMode";
+      rr:datatype xsd:integer ;
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate gont:districtVersion;
+    rr:objectMap [
+      rr:parentTriplesMap <#DistrictEntityVersion>;
+      rr:joinCondition [
+        rr:child "districtHistId";
+        rr:parent "districtHistId";
+      ];
+    ];
+  ].
+
+
+# DistrictEntityVersion
+
+<#DistrictEntityVersion>
+  rml:logicalSource [
+rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:referenceFormulation ql:XPath;
+    rml:iterator "/eCH-0071/districts/district";
+  ]; 
+
+  rr:subjectMap [
+    rr:template "http://classifications.data.admin.ch/districtentryversion/{districtHistId}";
+    rr:class gont:DistrictEntityVersion ;
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate gont:id;
+    rr:objectMap [
+      rml:reference "districtHistId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate dct:identifier;
+    rr:objectMap [
+      rml:reference "districtHistId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:cantonId;
+    rr:objectMap [
+      rml:reference "cantonId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtId;
+    rr:objectMap [
+      rml:reference "districtId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate gont:longName;
+    rr:objectMap [
+      rml:reference "districtLongName";
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate gont:shortName;
+    rr:objectMap [
+      rml:reference "districtShortName";
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtAdmissionNumber;
+    rr:objectMap [
+      rml:reference "districtAdmissionNumber";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtAdmissionModeId;
+    rr:objectMap [
+      rml:reference "districtAdmissionMode";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtAdmissionDate;
+    rr:objectMap [
+      rml:reference "districtAdmissionDate";
+      rr:datatype xsd:date ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtAbolitionNumber;
+    rr:objectMap [
+      rml:reference "districtAbolitionNumber";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtAbolitionModeId;
+    rr:objectMap [
+      rml:reference "districtAbolitionMode";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtAbolitionDate;
+    rr:objectMap [
+      rml:reference "districtAbolitionDate";
+      rr:datatype xsd:date ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtDateOfChange;
+    rr:objectMap [
+      rml:reference "districtDateOfChange";
+      rr:datatype xsd:date ;
+    ]
+ ] .
+
+ # historyMunicipality
+
+ <#historyMunicipality>
+  rml:logicalSource [
+    rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:referenceFormulation ql:XPath;
+    rml:iterator "/eCH-0071/municipalities/municipality";
+  ]; 
+
+  rr:subjectMap [
+    rr:template "http://classifications.data.admin.ch/municipalityversion/{historyMunicipalityId}";
+    rr:class gont:MunicipalityVersion ;
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate gont:id;
+    rr:objectMap [
+      rml:reference "historyMunicipalityId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate dct:identifier;
+    rr:objectMap [
+      rml:reference "historyMunicipalityId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:districtHistId;
+    rr:objectMap [
+      rml:reference "districtHistId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:cantonAbbreviation;
+    rr:objectMap [
+      rml:reference "cantonAbbreviation";
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityId;
+    rr:objectMap [
+      rml:reference "municipalityId";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate gont:longName;
+    rr:objectMap [
+      rml:reference "municipalityLongName";
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate gont:shortName;
+    rr:objectMap [
+      rml:reference "municipalityShortName";
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityStatusId;
+    rr:objectMap [
+      rml:reference "municipalityStatus";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityAdmissionNumber;
+    rr:objectMap [
+      rml:reference "municipalityAdmissionNumber";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityAdmissionModeId;
+    rr:objectMap [
+      rml:reference "municipalityAdmissionMode";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityAdmissionDate;
+    rr:objectMap [
+      rml:reference "municipalityAdmissionDate";
+      rr:datatype xsd:date ;
+
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityAbolitionNumber;
+    rr:objectMap [
+      rml:reference "municipalityAbolitionNumber";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityAbolitionModeId;
+    rr:objectMap [
+      rml:reference "municipalityAbolitionMode";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityAbolitionDate;
+    rr:objectMap [
+      rml:reference "municipalityAbolitionDate";
+      rr:datatype xsd:date ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityDateOfChange;
+    rr:objectMap [
+      rml:reference "municipalityDateOfChange";
+      rr:datatype xsd:date ;
+    ]
+ ] .
+
+ # Municipality
+
+ <#Municipality>
+  rml:logicalSource [
+    rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:referenceFormulation ql:XPath;
+    rml:iterator "/eCH-0071/municipalities/municipality";
+  ]; 
+
+  rr:subjectMap [
+    rr:template "http://classifications.data.admin.ch/municipality/{municipalityId}";
+    rr:class gont:Municipality ;
+  ];
+
+  # This is a bit hackish: Technically this is assigned to the MunicipalityVersion but it should be
+  # always the same so we assign it here for easier mapping in the CONSTRUCT
+  rr:predicateObjectMap [
+    rr:predicate eCH-0071:municipalityEntryModeId;
+    rr:objectMap [
+      rml:reference "municipalityEntryMode";
+      rr:datatype xsd:integer ;
+    ]
+  ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate gont:id;
+    rr:objectMap [
+      rml:reference "municipalityId";
+      rr:datatype xsd:integer ;
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dct:identifier;
+    rr:objectMap [
+      rml:reference "municipalityId";
+      rr:datatype xsd:integer ;
+    ]
+  ].
+
+ # MunicipalityEvent
+
+ <#MunicipalityEvent>
+  rml:logicalSource [
+    rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:referenceFormulation ql:XPath;
+    rml:iterator "/eCH-0071/municipalities/municipality";
+  ]; 
+
+  rr:subjectMap [
+    rr:template "http://classifications.data.admin.ch/event/hgv/municipality/{municipalityAdmissionNumber}";
+    rr:class gont:MunicipalityChangeEvent ;
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate gont:date;
+    rr:objectMap [
+      rml:reference "municipalityAdmissionDate";
+      rr:datatype xsd:date ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate gont:id;
+    rr:objectMap [
+      rml:reference "municipalityAdmissionNumber";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate dct:identifier;
+    rr:objectMap [
+      rml:reference "municipalityAdmissionNumber";
+      rr:datatype xsd:integer ;
+    ]
+ ] .
+
+ # DistrictEvent
+
+ <#DistrictEvent>
+  rml:logicalSource [
+    rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:referenceFormulation ql:XPath;
+    rml:iterator "/eCH-0071/districts/district";
+  ]; 
+
+  rr:subjectMap [
+    rr:template "http://classifications.data.admin.ch/event/hgv/district/{districtAdmissionNumber}";
+    rr:class gont:DistrictChangeEvent ;
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate gont:date;
+    rr:objectMap [
+      rml:reference "districtAdmissionDate";
+      rr:datatype xsd:date ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate gont:id;
+    rr:objectMap [
+      rml:reference "districtAdmissionNumber";
+      rr:datatype xsd:integer ;
+    ]
+ ] ;
+
+  rr:predicateObjectMap [
+    rr:predicate dct:identifier;
+    rr:objectMap [
+      rml:reference "districtAdmissionNumber";
+      rr:datatype xsd:integer ;
+    ]
+ ] .
+
