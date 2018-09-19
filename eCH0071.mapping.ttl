@@ -21,9 +21,13 @@
   rml:logicalSource [
      rml:source [
       a carml:Stream ;
+	  carml:declaresNamespace [
+        carml:namespacePrefix "eCH-0071" ;
+        carml:namespaceName "http://www.ech.ch/xmlns/eCH-0071/1" ;
+      ] ;
 ] ;
     rml:referenceFormulation ql:XPath;
-    rml:iterator "/eCH-0071/cantons/canton";
+    rml:iterator "/eCH-0071:nomenclature/cantons/canton";
   ]; 
 
   rr:subjectMap [
@@ -77,7 +81,7 @@
       a carml:Stream ;
 ] ;
     rml:referenceFormulation ql:XPath;
-    rml:iterator "/eCH-0071/districts/district";
+   rml:iterator "/eCH-0071:nomenclature/districts/district";
   ]; 
 
   rr:subjectMap [
@@ -128,7 +132,7 @@ rml:logicalSource [
   rml:source [
       a carml:Stream ;] ;
     rml:referenceFormulation ql:XPath;
-    rml:iterator "/eCH-0071/districts/district";
+   rml:iterator "/eCH-0071:nomenclature/districts/district";
   ]; 
 
   rr:subjectMap [
@@ -246,7 +250,7 @@ rml:logicalSource [
       a carml:Stream ;
 ] ;
     rml:referenceFormulation ql:XPath;
-    rml:iterator "/eCH-0071/municipalities/municipality";
+   rml:iterator "/eCH-0071:nomenclature/municipalities/municipality";
   ]; 
 
   rr:subjectMap [
@@ -380,7 +384,7 @@ rml:logicalSource [
       a carml:Stream ;
 ] ;
     rml:referenceFormulation ql:XPath;
-    rml:iterator "/eCH-0071/municipalities/municipality";
+   rml:iterator "/eCH-0071:nomenclature/municipalities/municipality";
   ]; 
 
   rr:subjectMap [
@@ -422,7 +426,7 @@ rml:logicalSource [
       a carml:Stream ;
 ] ;
     rml:referenceFormulation ql:XPath;
-    rml:iterator "/eCH-0071/municipalities/municipality";
+   rml:iterator "/eCH-0071:nomenclature/municipalities/municipality";
   ]; 
 
   rr:subjectMap [
@@ -462,7 +466,7 @@ rml:logicalSource [
       a carml:Stream ;
 ] ;
     rml:referenceFormulation ql:XPath;
-    rml:iterator "/eCH-0071/districts/district";
+   rml:iterator "/eCH-0071:nomenclature/districts/district";
   ]; 
 
   rr:subjectMap [
