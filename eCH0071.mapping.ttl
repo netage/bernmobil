@@ -19,7 +19,9 @@
 
 <#Canton>
   rml:logicalSource [
-    rml:source "input/eCH0071/eCH0071_170402.xml";
+     rml:source [
+      a carml:Stream ;
+] ;
     rml:referenceFormulation ql:XPath;
     rml:iterator "/eCH-0071/cantons/canton";
   ]; 
@@ -71,7 +73,9 @@
 
 <#District>
   rml:logicalSource [
-    rml:source "input/eCH0071/eCH0071_170402.xml";
+     rml:source [
+      a carml:Stream ;
+] ;
     rml:referenceFormulation ql:XPath;
     rml:iterator "/eCH-0071/districts/district";
   ]; 
@@ -120,8 +124,9 @@
 # DistrictEntityVersion
 
 <#DistrictEntityVersion>
-  rml:logicalSource [
-rml:source "input/eCH0071/eCH0071_170402.xml";
+rml:logicalSource [
+  rml:source [
+      a carml:Stream ;] ;
     rml:referenceFormulation ql:XPath;
     rml:iterator "/eCH-0071/districts/district";
   ]; 
@@ -237,7 +242,9 @@ rml:source "input/eCH0071/eCH0071_170402.xml";
 
  <#historyMunicipality>
   rml:logicalSource [
-    rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:source [
+      a carml:Stream ;
+] ;
     rml:referenceFormulation ql:XPath;
     rml:iterator "/eCH-0071/municipalities/municipality";
   ]; 
@@ -369,7 +376,9 @@ rml:source "input/eCH0071/eCH0071_170402.xml";
 
  <#Municipality>
   rml:logicalSource [
-    rml:source "input/eCH0071/eCH0071_170402.xml";
+     rml:source [
+      a carml:Stream ;
+] ;
     rml:referenceFormulation ql:XPath;
     rml:iterator "/eCH-0071/municipalities/municipality";
   ]; 
@@ -409,7 +418,9 @@ rml:source "input/eCH0071/eCH0071_170402.xml";
 
  <#MunicipalityEvent>
   rml:logicalSource [
-    rml:source "input/eCH0071/eCH0071_170402.xml";
+    rml:source [
+      a carml:Stream ;
+] ;
     rml:referenceFormulation ql:XPath;
     rml:iterator "/eCH-0071/municipalities/municipality";
   ]; 
@@ -447,7 +458,9 @@ rml:source "input/eCH0071/eCH0071_170402.xml";
 
  <#DistrictEvent>
   rml:logicalSource [
-    rml:source "input/eCH0071/eCH0071_170402.xml";
+     rml:source [
+      a carml:Stream ;
+] ;
     rml:referenceFormulation ql:XPath;
     rml:iterator "/eCH-0071/districts/district";
   ]; 
