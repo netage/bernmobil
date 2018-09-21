@@ -1,0 +1,57 @@
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix bm:   <http://vocab.bernmobil.com/ticket#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://vocab.bernmobil.com/ticket> a owl:Ontology, adms:Asset;
+    dcterms:title "Vocabulary related to ticket events";
+    dcterms:description "This vocabulary is intended to describe all the aspects which are needed to describe tickets";
+    dcterms:modified "2018-08-23"^^xsd:date;
+    vann:preferredNamespaceUri "http://vocab.bernmobil.com/ticket#";
+    vann:preferredNamespacePrefix "bm";
+    dcterms:created "2018-08-23"^^xsd:date;
+    dcterms:type <http://purl.org/adms/assettype/Ontology>;
+    adms:status <http://purl.org/adms/status/UnderDevelopment>;
+    dc:creator <http://www.netage.nl> .
+	
+bm:Ticket a rdfs:Class, owl:Class;
+	rdfs:label "Bernmobil Ticket";
+	rdfs:subClassOf sem:Event.
+	
+bm:hasPartner a rdf:Property;
+	rdfs:domain sem:hasActor;
+	rdfs:label "Event has partner".
+	
+bm:hasTerm a rdf:Property;
+	rdfs:domain sem:hasSubEvent;
+	rdfs:label "Has term".
+	
+bm:Term a rdfs:Class, owl:Class;
+	rdfs:subClassOf sem:Event;
+	rdfs:label "Term of Ticket".
+
+bm:Partner a rdfs:Class, owl:Class;
+	rdfs:label "Partner";
+	rdfs:subClassOf sem:Actor .
+	
+bm:Status a rdfs:Class, owl:Class;
+	rdfs:subClassOf sem:Event;
+	rdfs:label "status of Ticket".
+	
+bm:hasStatus a rdf:Property;
+	rdfs:domain sem:hasSubEvent;
+	rdfs:label "Has status".
+	
+bm:hasTicketTrigger a rdf:Property;
+	rdfs:domain rdfs:label;
+	rdfs:label "How the Ticket is triggered".
+
+
+
